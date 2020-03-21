@@ -1,0 +1,16 @@
+[
+  {
+    "modid": "endercomms",
+    "name": "EnderComms",
+    "description": "Call and teleport to friends with an ender phone",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "",
+    "updateUrl": "",
+    "authorList": ["uberifix"],
+    "credits": "\nThe pxl8 community, for being mostly cool \nHatsune Miku for making minecraft",
+    "logoFile": "",
+    "screenshots": [],
+    "dependencies": []
+  }
+]
