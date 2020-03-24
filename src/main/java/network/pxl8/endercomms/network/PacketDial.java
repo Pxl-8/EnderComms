@@ -2,18 +2,13 @@ package network.pxl8.endercomms.network;
 
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.Style;
-import net.minecraft.util.text.TextComponentString;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.FMLCommonHandler;
-import net.minecraftforge.fml.common.network.ByteBufUtils;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
-import network.pxl8.endercomms.lib.LibMeta;
+import network.pxl8.endercomms.Chat;
 
 import java.util.UUID;
 
@@ -63,13 +58,16 @@ public class PacketDial implements IMessage {
             World world = user.getEntityWorld();
 
             EntityPlayer targetPlayer = world.getPlayerEntityByUUID(message.getPlayer());
-
-            ITextComponent targetName = targetPlayer.getDisplayName();
+            if (targetPlayer == null) {
+                user.sendStatusMessage(Chat.fail("chat.endercomms.teleport.no_player"), true);
+                return;
+            }
 
             if (user.equals(targetPlayer)) {
-                user.sendStatusMessage(new TextComponentString("Cannot teleport to yourself!").setStyle(new Style().setColor(TextFormatting.RED)), true);
+                user.sendStatusMessage(Chat.fail("chat.endercomms.teleport.invalid_self"), true);
             } else {
-                user.sendStatusMessage(new TextComponentString("Teleporting to: ").setStyle(new Style().setColor(TextFormatting.GREEN)).appendSibling(targetName), true);
+                ITextComponent targetName = targetPlayer.getDisplayName();
+                user.sendStatusMessage(Chat.success("chat.endercomms.teleport.success", targetName), true);
 
                 user.attemptTeleport(targetPlayer.posX, targetPlayer.posY, targetPlayer.posZ);
             }

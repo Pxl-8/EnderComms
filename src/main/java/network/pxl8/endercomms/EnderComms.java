@@ -24,7 +24,6 @@ public class EnderComms {
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
-
         proxy.init();
     }
 

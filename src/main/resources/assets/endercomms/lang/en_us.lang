@@ -1,0 +1,7 @@
+itemGroup.tab_endercomms=EnderComms
+
+item.endercomms.endercomm.name=EnderPhone
+
+chat.endercomms.teleport.success=Teleporting to %s
+chat.endercomms.teleport.no_player=That player is not online.
+chat.endercomms.teleport.invalid_self=You cannot teleport to yourself!

@@ -1,6 +1,5 @@
 package network.pxl8.endercomms.gui;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.util.ResourceLocation;
